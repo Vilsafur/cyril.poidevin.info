@@ -37,8 +37,8 @@ export default {
   align-items: center;
   align-content: center;
   flex-flow: row wrap;
-  height: 100%;
   width: 100%;
+  padding: 20px;
 }
 .home div {
   padding: 20px 0;
@@ -47,6 +47,7 @@ export default {
 .home .tagCloud {
   order: 2;
 }
+
 .home .other {
   align-self: flex-start;
   display: flex;
@@ -74,6 +75,10 @@ export default {
   }
   .logo img {
     margin: auto;
+  }
+
+  .home .tagCloud img{
+    width: 100%;
   }
 }
 </style>
