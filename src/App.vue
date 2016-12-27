@@ -9,34 +9,36 @@
     </header>
     <main>
       <transition name="custom-animate" enter-active-class="animated zoomInUp" leave-active-class="animated zoomOutDown" mode="out-in">
+        <home v-if='page === "home"' key='page'></home>
       </transition>
     </main>
   </div>
 </template>
 
 <script>
+import Home from './Components/Home.vue'
 
 export default {
   components: {
+    Home
   },
   data: function() {
     return {
-      page: "home"
+      page: ""
     }
   },
   methods: {
     goHome: function () {
-      this.page = "home"
       history.pushState({page:"home"}, "home", "/")
+      this.page = "home"
     },
     goCv: function () {
-      this.page = "cv"
       history.pushState({page:"cv"}, "cv", "/cv")
+      this.page = "cv"
     }
   },
   created: function() {
     let uri = window.location.pathname;
-    console.log(uri);
     if (uri === '/') {
       this.page = "home"
     }
@@ -46,6 +48,15 @@ export default {
     else {
       window.location = "/"
     }
+    window.onpopstate = function(event) {
+      if(event.state == null) {
+        this.page = "home"
+      }
+      else {
+        this.page = event.state.page
+        console.log(this.page)
+      }
+    }.bind(this)
   }
 }
 </script>
