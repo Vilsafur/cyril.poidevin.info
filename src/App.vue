@@ -1,60 +1,179 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div class='page'>
+    <header>
+      <h1 class="name">Cyril POIDEVIN</h1>
+      <nav>
+        <button @click='goHome'>Accueil</button>
+        <button @click='goCv'>C.V.</button>
+      </nav>
+    </header>
+    <main>
+      <transition name="custom-animate" enter-active-class="animated zoomInUp" leave-active-class="animated zoomOutDown" mode="out-in">
+      </transition>
+    </main>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'app',
-  data () {
+  components: {
+  },
+  data: function() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      page: "home"
+    }
+  },
+  methods: {
+    goHome: function () {
+      this.page = "home"
+      history.pushState({page:"home"}, "home", "/")
+    },
+    goCv: function () {
+      this.page = "cv"
+      history.pushState({page:"cv"}, "cv", "/cv")
+    }
+  },
+  created: function() {
+    let uri = window.location.pathname;
+    console.log(uri);
+    if (uri === '/') {
+      this.page = "home"
+    }
+    else if (uri === "/cv") {
+      this.page = "cv"
+    }
+    else {
+      window.location = "/"
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@font-face {
+  font-family: 'Aller';
+  src: url('./assets/fonts/Aller_Rg.ttf');
 }
 
-h1, h2 {
-  font-weight: normal;
+@font-face {
+  font-family: 'Akashi';
+  src: url('./assets/fonts/Akashi.ttf');
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+html, body {
+  height: 100%;
+  overflow: hidden;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
+body {
+  font-family: "Aller", sans-serif;
+  background: #000 url('./assets/picts/bg.jpg') no-repeat fixed center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-size: 25px;
+  color: #AEB8C0;
+  margin: 0;
 }
 
-a {
-  color: #42b983;
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+h1 {
+  font-family: "Akashi";
+}
+
+header {
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 30px 30px 0 30px;
+}
+
+.name {
+  order: 2;
+}
+
+nav {
+  order: 1;
+  display: flex;
+  align-items: center;
+   align-content: center;
+  justify-content: flex-end;
+  flex-flow: column wrap;
+}
+
+nav button {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 75%;
+  border-bottom: 3px solid #0C88E7;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+main {
+  flex: 4;
+  margin: 10px;
+  padding: 0 10px;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+  background-color: rgba(250,250,250,0.2);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  box-shadow: -1px 2px 20px rgba(255, 255, 255, 0.6) inset;
+  color: white;
+  overflow: auto;
+}
+
+@media (max-width: 420px) {
+    .page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  .name {
+    order: 1;
+  }
+
+  nav {
+    order: 2;
+    flex-flow: row wrap;
+    padding: 0;
+  }
+
+  main {
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: center;
+  }
 }
 </style>
