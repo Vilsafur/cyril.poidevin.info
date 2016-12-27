@@ -72,5 +72,8 @@ export default {
   .home {
     height: auto;
   }
+  .logo img {
+    margin: auto;
+  }
 }
 </style>
