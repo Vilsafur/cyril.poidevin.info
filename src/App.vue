@@ -10,6 +10,7 @@
     <main>
       <transition name="custom-animate" enter-active-class="animated zoomInUp" leave-active-class="animated zoomOutDown" mode="out-in">
         <home v-if='page === "home"' key='page'></home>
+        <cv v-if='page === "cv"' key='page'></cv>
       </transition>
     </main>
   </div>
@@ -17,10 +18,12 @@
 
 <script>
 import Home from './Components/Home.vue'
+import Cv from './Components/CV.vue'
 
 export default {
   components: {
-    Home
+    Home,
+    Cv
   },
   data: function() {
     return {
