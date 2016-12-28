@@ -34,8 +34,9 @@ export default {
 <style>
 .home {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   align-content: center;
+  justify-content: space-between;
   flex-flow: row wrap;
   width: 100%;
   padding: 20px;
