@@ -127,7 +127,6 @@ class DefaultController extends Controller
           ->getRepository('VlsCoreBundle:User')
           ->find(1);
 
-<<<<<<< HEAD
         $socialForm = $this->get('form.factory')->create(SocialType::class, $user);
 
         if ($request->isMethod('POST')) {
@@ -146,26 +145,6 @@ class DefaultController extends Controller
 
         return $this->render('VlsBackOfficeBundle:Default:social.html.twig', array(
             'socialForm' => $socialForm->createView(),
-=======
-        $socialForm = $this->get('form.factory')->create(SocialType::class, $user);
-
-        if ($request->isMethod('POST')) {
-            $socialForm->handleRequest($request);
-
-            if ($socialForm->isValid()) {
-              $em = $this->getDoctrine()->getManager();
-              $em->persist($user);
-              $em->flush();
-
-              $request->getSession()->getFlashBag()->add('info', 'Les valeurs ont bien enregistrées.');
-
-              return $this->redirectToRoute('vls_back_office_social');
-            }
-        }
-
-        return $this->render('VlsBackOfficeBundle:Default:social.html.twig', array(
-            'socialForm' => $socialForm->createView(),
->>>>>>> d3af93d11494b1948166e464d651a147adfd966e
         ));
     }
 }
