@@ -135,7 +135,10 @@
 
 							<div class="row">
                                 {% for certificate in certificates %}
-                                    {% if loop.index is odd %}
+                                    {% if loop.index0 % 2 == 0 %}
+                                        {% if not loop.first %}
+                                            </div>
+                                        {% endif %}
                                     <div class="4u 12u$(mobile)">
                                     {% endif %}
                                         <article class="item">
@@ -144,8 +147,8 @@
                                                 <h3>{{ certificate.title }}</h3>
                                             </header>
                                         </article>
-                                    {% if loop.index is odd %}
-                                    </div>
+                                    {% if loop.last %}
+                                        </div>
                                     {% endif %}
                                 {% endfor %}
 							</div>
