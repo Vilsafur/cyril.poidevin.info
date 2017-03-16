@@ -1,0 +1,4 @@
+services:
+#    vls_core.example:
+#        class: Vls\CoreBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

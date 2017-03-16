@@ -1,0 +1,19 @@
+vls_back_office_homepage:
+    path:     /
+    defaults: { _controller: VlsBackOfficeBundle:Default:index }
+
+vls_back_office_portfolio:
+    path:     /portfolio
+    defaults: { _controller: VlsBackOfficeBundle:Default:portfolio }
+
+vls_back_office_certificate:
+    path:     /certificate
+    defaults: { _controller: VlsBackOfficeBundle:Default:certificate }
+
+vls_back_office_about:
+    path:     /about
+    defaults: { _controller: VlsBackOfficeBundle:Default:about }
+
+vls_back_office_social:
+    path:     /social
+    defaults: { _controller: VlsBackOfficeBundle:Default:social }
