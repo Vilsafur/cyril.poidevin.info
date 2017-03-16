@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 {% from "VlsCoreBundle:macros:isActive.html.twig" import is_active as is_active %}
 <!DOCTYPE html>
@@ -88,3 +89,95 @@
     {% block script %}{% endblock %}
 </body>
 </html>
+=======
+
+{% from "VlsCoreBundle:macros:isActive.html.twig" import is_active as is_active %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cyril POIDEVIN{% endblock %}</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    {% stylesheets
+        'bundles/vlsbackoffice/css/bootstrap.min.css'
+        'bundles/vlsbackoffice/css/font-awesome.min.css'
+        'bundles/vlsbackoffice/css/local.css'
+        filter='cssrewrite'
+    %}
+      <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+
+    {% javascripts
+        'bundles/vlsbackoffice/js/jquery-1.10.2.min.js'
+        'bundles/vlsbackoffice/js/bootstrap.min.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
+    <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
+
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Admin Panel</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li class="{{ is_active('vls_back_office_homepage') }}"><a href="{{ path('vls_back_office_homepage') }}"><i class="fa fa-bullseye"></i> Dashboard</a></li>
+                    <li class="{{ is_active('vls_back_office_portfolio') }}"><a href="{{ path('vls_back_office_portfolio') }}"><i class="fa fa-th"></i> Portfolio</a></li>
+                    <li class="{{ is_active('vls_back_office_certificate') }}"><a href="{{ path('vls_back_office_certificate') }}"><i class="fa fa-certificate"></i> Certificats</a></li>
+                    <li class="{{ is_active('vls_back_office_about') }}"><a href="{{ path('vls_back_office_about') }}"><i class="fa fa-user"></i> A Propos</a></li>
+                    <li class="{{ is_active('vls_back_office_social') }}"><a href="{{ path('vls_back_office_social') }}"><i class="fa fa-share-square"></i> Social</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li><a href="/"><i class="fa fa-tasks"></i> Allez au site</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    {% block page_title %}{% endblock %}
+                    {% for message in app.session.flashbag.get('info') %}
+                        <div class="alert alert-dismissable alert-info">
+                            <button data-dismiss="alert" class="close" type="button">&times;</button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% for message in app.session.flashbag.get('warning') %}
+                        <div class="alert alert-dismissable alert-warning">
+                            <button data-dismiss="alert" class="close" type="button">&times;</button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% for message in app.session.flashbag.get('critical') %}
+                        <div class="alert alert-dismissable alert-danger">
+                            <button data-dismiss="alert" class="close" type="button">&times;</button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    {% block script %}{% endblock %}
+</body>
+</html>
+>>>>>>> d3af93d11494b1948166e464d651a147adfd966e

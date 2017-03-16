@@ -1,5 +1,6 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
+<<<<<<< HEAD
 security:
     encoders:
         Vls\CoreBundle\Entity\User: sha512
@@ -7,6 +8,15 @@ security:
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         main:
+=======
+security:
+    encoders:
+        Vls\CoreBundle\Entity\User: sha512
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        main:
+>>>>>>> d3af93d11494b1948166e464d651a147adfd966e
             id: fos_user.user_provider.username
 
     firewalls:
@@ -15,6 +25,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+<<<<<<< HEAD
         main:
             pattern:      ^/
             anonymous:    true
@@ -26,6 +37,19 @@ security:
                 path:       fos_user_security_logout
                 target:     /
             remember_me:
+=======
+        main:
+            pattern:      ^/
+            anonymous:    true
+            provider:     main
+            form_login:
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+            logout:
+                path:       fos_user_security_logout
+                target:     /
+            remember_me:
+>>>>>>> d3af93d11494b1948166e464d651a147adfd966e
                 secret:     %secret% # %secret% est un paramètre de parameter
     access_control:
         - { path: ^/backoffice, roles: ROLE_SUPER_ADMIN }
