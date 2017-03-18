@@ -45,7 +45,7 @@ class DefaultController extends Controller
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Message en provenance du site personnel')
                     ->setFrom($enquiry->getEmail())
-                    ->setTo('vilsafur@gmail.com')
+                    ->setTo('cyril@poidevin.info')
                     ->setBody($this->renderView('VlsFrontOfficeBundle:Emails:contact.html.twig', array('enquiry' => $enquiry)), 'text/html');
                 $this->get('mailer')->send($message);
                 return $this->redirectToRoute('vls_front_office_homepage');
