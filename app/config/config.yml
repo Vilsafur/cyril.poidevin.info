@@ -86,3 +86,7 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+# Google Analytics Bundle Configuration
+google_analytics_api:
+    google_analytics_json_key: "%google_analytics_json_key%"

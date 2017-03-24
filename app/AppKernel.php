@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Vls\FrontOfficeBundle\VlsFrontOfficeBundle(),
             new Vls\BackOfficeBundle\VlsBackOfficeBundle(),
             new Vls\CoreBundle\VlsCoreBundle(),
+            new MediaFigaro\GoogleAnalyticsApi\GoogleAnalyticsApi(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

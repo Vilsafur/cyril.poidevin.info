@@ -105,17 +105,20 @@
 
 							<div class="row">
                                 {% for portfolio in portfolios %}
-                                    {% if loop.index is odd %}
+                                    {% if loop.index0 % 2 == 0 %}
+                                        {% if not loop.first %}
+                                            </div>
+                                        {% endif %}
                                     <div class="4u 12u$(mobile)">
                                     {% endif %}
                                         <article class="item">
-                                            <a href="/portfolios/{{ portfolio.image }}" target="_blank" class="image fit"><img src="portfolios/{{ portfolio.image }}" alt="" /></a>
+                                            <a href="/portfolios/{{ portfolio.image }}" target="_blank" class="image fit"><img src="/portfolios/{{ portfolio.image }}" alt="" /></a>
                                             <header>
                                                 <h3>{{ portfolio.title }}</h3>
                                             </header>
                                         </article>
-                                    {% if loop.index is odd %}
-                                    </div>
+                                    {% if loop.last %}
+                                        </div>
                                     {% endif %}
                                 {% endfor %}
 							</div>
